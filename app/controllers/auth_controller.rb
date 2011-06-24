@@ -3,7 +3,7 @@ class AuthController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:access_token]
 
   def welcome
-    render :text => "Hiya! #{current_user.first_name} #{current_user.last_name}"
+    #render :text => "Hiya! #{current_user.first_name} #{current_user.last_name}"
   end
 
   def authorize

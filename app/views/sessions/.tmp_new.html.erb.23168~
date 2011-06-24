@@ -8,11 +8,12 @@
   <%= f.password_field :password %></p>
 
   <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <label for="user_remember_me">Remember</label> <!--%= f.label :remember_me %--></p>
+    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
   <% end -%>
 
   <p><%= f.submit "Sign in" %></p>
 <% end %>
-<%= render :partial => "devise/shared/links" %>
 
 <%= render :partial => "social_networks" %>
+
+<%= render :partial => "devise/shared/links" %>

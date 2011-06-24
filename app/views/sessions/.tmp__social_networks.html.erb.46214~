@@ -1,5 +1,5 @@
 <div>
-<%= link_to 'Sina Connect', '/auth/tsina' %> &nbsp;
+<%= link_to 'Sina Connect', '/auth/tsina' %><br/>
 <%= link_to 'QQ Connect', '/auth/tqq' %>
 </div>
 

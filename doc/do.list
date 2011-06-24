@@ -1,0 +1,21 @@
+#==记录项目中的变化历程
+
+
+#==Todo
+添加sign_in/sign_out路由
+添加用户实用字段
+用户信息更改
+html式输入框变换
+部署到heroku上运行
+
+
+2011.6.24
+  从git上fork项目
+  增删一些文档性文件
+  配置数据库文件: rake db:setup
+  seeds文件中类错误，将内容清除
+  可以启动正常访问
+  规范化gem包的版本配置  
+  添加sina/qq登录支持
+  copy devise默认的视图，根据需要进行定制： rails generate devise:views
+  添加welcome页和推出链接
