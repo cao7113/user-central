@@ -3,23 +3,12 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <p><%= f.label :username %><br />
-  <%= f.text_field :username %></p>
-
-  <p><%= f.label :home_url %><br />
-  <%= f.text_field :home_url %></p>
-
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
-
-  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></p>
+  <p><%= f.text_field :username, :placeholder=>"User name" %></p>
+  <p><%= f.text_field :home_url, :placeholder=>"Home url" %></p>
+  <p><%= f.email_field :email, :placeholder=>"Email" %></p>
+  <p><%= f.password_field :password, :placeholder=>"Password, leave blank if you don't want to change it" %></p>
+  <p><%= f.password_field :password_confirmation, :placeholder=>"Password confirmation" %></p>
+  <p><%= f.password_field :current_password, :placeholder=>"current password, we need your current password to confirm your changes" %></p>
 
   <p><%= f.submit "Update" %></p>
 <% end %>

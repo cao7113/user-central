@@ -4,11 +4,9 @@
 <% end %>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+  <p><%= f.email_field :email, :placeholder=>"Your email or username" %></p>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+  <p><%= f.password_field :password, :placeholder=>"Password" %></p>
 
   <% if devise_mapping.rememberable? -%>
     <p><%= f.check_box :remember_me %> <label for="user_remember_me">Remember</label> <!--%= f.label :remember_me %--></p>
