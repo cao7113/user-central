@@ -1,2 +1,4 @@
-<h2>Home page</h2> <%=link_to "sign_out", destroy_user_session_path%>
-<p>Welcom <%=current_user.first_name%> at <%=Time.now.to_s(:db)%></p>
+<%=link_to "Sign Out", sign_out_path%> &nbsp; <%=link_to "Settings", edit_profile_path%>
+<h2>Home page</h2>
+<p>Welcome <%=current_user.username%> at <%=Time.now.to_s(:db)%></p>
+<p>Look my url at <%=link_to current_user.home_url %></p>

@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  before_filter :save_referrer, :only => :edit
+  #before_filter :save_referrer, :only => :edit #comment
 
   def new
      # Building the resource with information that MAY BE available from omniauth!
@@ -10,6 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
+    
     build_resource 
 
     if session[:omniauth] && @user.errors[:email][0] =~ /has already been taken/
