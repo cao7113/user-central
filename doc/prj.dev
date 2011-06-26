@@ -1,0 +1,20 @@
+#====原有项目学习/分析
+#==用户认证部分
+devise和omniauth是分开的
+可以考虑用devise自带的，更好的融合起来
+看到devise有内建的omniauth支持，有空将现在的方式迁移过去
+
+#==sso service
+authentication--用户通过第三方认证生成的用户关联
+access_grant--用户授权的客户应用
+  里面的code是何含义？？？
+一个user可以对应多个authentications和access_grants
+users表中的authentication_token--access_grants表的access_token
+
+client--客户应用注册信息
+
+
+==omniauth的一些改进
+在生成的user_info hash中加入email的key
+将使用的具体策略可以用initializer覆盖
+

@@ -2,14 +2,24 @@
 
 
 #==Todo
-
-应用子项目运行
-部署到heroku上运行， 项目优化，部署/维护考虑！！！
-过去一些资源的集成和关联性思考
-
-注册验证码的添加
-看到devise有内建的omniauth支持，有空将现在的方式迁移过去
-测试流程优化和整理
+  应用子项目运行
+  部署到heroku上运行， 项目优化，部署/维护考虑！！！
+  过去一些资源的集成和关联性思考
+  注册验证码的添加
+	测试流程优化和整理
+	避免帐号取消的操作或改进之
+	添加管理权限
+	500错误页和全局错误捕获
+	最优性能调节
+	用户相关服务整理： 
+	   注册/修改设置--registration_controller-->user
+	   登入/登出--session-->authentication-----^
+	   充值密码--password---------------------^
+	   用户信息查询平台----users--------------^
+	   验证邮箱--？
+2011.6.26
+  omniauth user信息中添加email字段
+  优化omniauth中获取用户信息的方法和流程
 
 2011.6.25
   添加sign_in/sign_out路由(TODO:调查更好的覆盖engine路由的方法)
@@ -17,7 +27,7 @@
   用户信息更新页，添加路由：edit_profile，修改页面中对应字段
   html式输入框变换，html5的input元素中添加属性placeholder="hint text"
   微博应用入口图标链接
-  
+  解决腾讯微博拿不到用户uid的bug，添加initializer: *tqq*.rb
 
 2011.6.24
   从git上fork项目

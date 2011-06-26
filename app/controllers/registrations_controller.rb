@@ -1,18 +1,15 @@
 class RegistrationsController < Devise::RegistrationsController
-  #before_filter :save_referrer, :only => :edit #comment
+  #before_filter :save_referrer, :only => :edit 
 
-  def new
+  def new     
      # Building the resource with information that MAY BE available from omniauth!
-     build_resource(:first_name => session[:omniauth] && session[:omniauth]['user_info'] && session[:omniauth]['user_info']['first_name'], 
-         :last_name => session[:omniauth] && session[:omniauth]['user_info'] && session[:omniauth]['user_info']['last_name'],
-         :email => session[:omniauth_email] )
+     hash=session[:omniauth] ? User.omniauth_hash(session[:omniauth]) : {}
+     build_resource(hash)
      render_with_scope :new
   end
 
-  def create
-    
+  def create    
     build_resource 
-
     if session[:omniauth] && @user.errors[:email][0] =~ /has already been taken/
       user = User.find_by_email(@user.email)
       # Link Accounts - if via social connect
@@ -24,11 +21,11 @@ class RegistrationsController < Devise::RegistrationsController
     session[:omniauth] = nil unless @user.new_record?
   end
   
-  def build_resource(*args)
-    super
-
+  def build_resource(*args)        
+    super         
     if session[:omniauth]
-      @user.apply_omniauth(session[:omniauth])
+      @user.apply_omniauth(session[:omniauth])      
+      #execute validation check and give some error hint!
       @user.valid?
     end
   end
