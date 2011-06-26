@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tag:</b>
+  <%= @seed.tag %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @seed.body %>
+</p>
+
+<p>
+  <b>Happen at:</b>
+  <%= @seed.happen_at %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @seed.note %>
+</p>
+
+
+<%= link_to 'Edit', edit_seed_path(@seed) %> |
+<%= link_to 'Back', seeds_path %>

@@ -7,13 +7,26 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+<div id='navigation'>
+	<%=link_to "Auth", "/"%> |
+	<%=link_to "Clients", "/client_apps/index"%> |
+	<%=link_to "Seeds", seeds_path %> |  
+</div>
+<hr/>
+
 <div>
-<p style="color:red;"><%=flash[:error]%></p>
-<p style="color:red;"><%=flash[:alert]%></p>
-<p style="color:green;"><%=flash[:notice]%></p>
+	<p style="color:red;"><%=flash[:error]%></p>
+	<p style="color:red;"><%=flash[:alert]%></p>
+	<p style="color:green;"><%=flash[:notice]%></p>
 </div>
 
 <%= yield %>
 
+<hr/>
+<div id="links">
+	Ref: <%=link_to "Source", "https://github.com/cao7113/user-central", :target=>"_blank" %> |
+	     <%=link_to "Devise", "https://github.com/plataformatec/devise", :target=>"_blank" %> |
+		 <%=link_to "Omniauth", "https://github.com/intridea/omniauth", :target=>"_blank" %> |
+</div>	
 </body>
 </html>

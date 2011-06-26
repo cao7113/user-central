@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username               
   validates_uniqueness_of :username
   
+  #FIXME 检查流程和画图
   def apply_omniauth(omniauth)
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
   end
@@ -36,7 +37,7 @@ class User < ActiveRecord::Base
   
   def initialize_fields
     self.status = "Active"
-    #FIXME cancel this
+    #FIXME cancel this in future
     self.expiration_date = 1.year.from_now
   end
 end

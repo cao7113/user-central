@@ -1,0 +1,7 @@
+<%= form_tag seeds_path do |f| %>  
+  <div class="field">
+    <%= text_field_tag 'seed[body]', nil, :placeholder=>"Body content...", :size=>60 %>
+    <%= text_field_tag 'seed[tag]', nil, :placeholder=>"Tag" %>
+    <%= submit_tag "Seed"%>
+  </div>
+<% end %>

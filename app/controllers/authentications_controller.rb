@@ -33,15 +33,12 @@ class AuthenticationsController < ApplicationController
 
   def create
     omniauth = request.env['omniauth.auth'] 
-    #debugger
-#    logger.debug "====>omniauth: #{omniauth.inspect}"
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if authentication
       flash[:notice] = "Signed in successfully"
       sign_in_and_redirect(:user, authentication.user)
     else
       user = User.new
-      #debugger
       user.apply_omniauth(omniauth)  
       #if user.save
       if user.update_attributes(User.omniauth_hash(omniauth))
@@ -49,8 +46,7 @@ class AuthenticationsController < ApplicationController
         sign_in_and_redirect(:user, user)
       else        
         session[:omniauth] = omniauth.except('extra')
-        # Check if email already taken. If so, ask user to link_accounts
-        #FIXME 修正这里的检查方法
+        # Check if email already taken. If so, ask user to link_accounts, FIXME 修正这里的检查方法
         if user.errors[:email][0] =~ /has already been taken/ # omniauth? TBD
           # fetch the user with this email id!
           user = User.find_by_email(user.email)
@@ -61,7 +57,7 @@ class AuthenticationsController < ApplicationController
     end
   end
 
-  def faiure
+  def failure
     flash[:notice] = params[:message]
     redirect_to root_path
   end

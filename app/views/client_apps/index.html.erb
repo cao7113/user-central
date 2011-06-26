@@ -1,0 +1,21 @@
+<h3>Client apps</h3>
+<p>
+	<%form_tag client_apps_path do %>
+	  <%=text_field_tag :name, nil, :placeholder=>"App name" %>
+	  <%=submit_tag "Generate"%>
+	<%end%>
+</p>
+<table>
+	 <tr>
+		<td>Name </td><td> App Id</td><td></td>
+	  </tr>
+	<%@clients.each do |client|%>
+	  <tr>
+		<td><%=client.name%> </td><td><%=client.app_id%></td>
+		<td>
+	        <%= link_to 'Destroy', "/client_apps/#{client.id}", :confirm => 'Are you sure?', :method => :delete %>
+		</td>
+	  </tr>
+	<%end%>	
+	<tr><td><%= will_paginate(@clients)%></td></tr>
+</table>

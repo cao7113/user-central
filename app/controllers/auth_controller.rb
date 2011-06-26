@@ -6,11 +6,8 @@ class AuthController < ApplicationController
   before_filter :authenticate_user!, :except => [:access_token]
   skip_before_filter :verify_authenticity_token, :only => [:access_token]
 
-  def welcome
-    #render :text => "Hiya! #{current_user.first_name} #{current_user.last_name}"
-  end
-
   def authorize
+    debugger
     AccessGrant.prune!
     access_grant = current_user.access_grants.create(:client => application)
     redirect_to access_grant.redirect_uri_for(params[:redirect_uri])

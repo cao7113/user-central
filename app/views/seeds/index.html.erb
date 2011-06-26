@@ -1,0 +1,17 @@
+<div id="new_seed">
+	<%=render :partial=>"simple_form"%>
+</div>
+<table>
+<% @seeds.each do |seed| %>
+  <tr>    
+    <td ><%= seed.body %></td>  
+  </tr>
+  <tr>
+  	<td><%= seed.happen_at.to_s(:db) if seed.happen_at %><%= seed.tag %> <%= seed.note %>
+	    <%= link_to 'Show', seed %>
+	    <%= link_to 'Edit', edit_seed_path(seed) %>
+	    <%= link_to 'Destroy', seed, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>

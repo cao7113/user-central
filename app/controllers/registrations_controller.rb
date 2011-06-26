@@ -24,6 +24,7 @@ class RegistrationsController < Devise::RegistrationsController
   def build_resource(*args)        
     super         
     if session[:omniauth]
+      #build_resource后会定义一个实例变量 @#{resource_name}
       @user.apply_omniauth(session[:omniauth])      
       #execute validation check and give some error hint!
       @user.valid?

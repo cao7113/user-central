@@ -11,10 +11,14 @@ access_grant--用户授权的客户应用
 一个user可以对应多个authentications和access_grants
 users表中的authentication_token--access_grants表的access_token
 
-client--客户应用注册信息
+client--客户应用的注册信息
 
 
 ==omniauth的一些改进
-在生成的user_info hash中加入email的key
-将使用的具体策略可以用initializer覆盖
+在生成的user_info hash中加入email的key，使用的具体认证策略（如tqq）可以用initializer覆盖
+
+auth--处理sso的server端的服务请求
+authentications--处理omniauth模型中第三方应用中的请求
+
+
 
