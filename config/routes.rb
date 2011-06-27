@@ -21,10 +21,10 @@ OauthProviderDemo::Application.routes.draw do
     match '/profile/edit'=>"registrations#edit", :as=>:edit_profile
   end
   
-  # Provider stuff
-  match '/auth/josh_id/authorize' => 'auth#authorize'
-  match '/auth/josh_id/access_token' => 'auth#access_token'
-  match '/auth/josh_id/user' => 'auth#user'
+  # Provider stuff 
+  match '/auth/:provider/authorize' => 'auth#authorize'
+  match '/auth/:provider/access_token' => 'auth#access_token'
+  match '/auth/:provider/user' => 'auth#user'
   
   # omniauth client stuff
   match '/auth/:provider/callback', :to => 'authentications#create'
