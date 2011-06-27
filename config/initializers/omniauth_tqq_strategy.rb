@@ -19,7 +19,6 @@ module OmniAuth
         {
           'username' => user_hash["data"]['name'],
           'name' => user_hash["data"]['nick'],
-          #need this if exists
           'email'=>user_hash["data"]['email'],
           'location' => user_hash["data"]['location'],
           'image' => user_hash["data"]['head'],
