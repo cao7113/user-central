@@ -7,11 +7,14 @@
 </p>
 <table>
 	 <tr>
-		<td>Name </td><td> App Id</td><td></td>
+		<td>Name </td><td> App info.</td><td></td>
 	  </tr>
 	<%@clients.each do |client|%>
 	  <tr>
-		<td><%=client.name%> </td><td><%=client.app_id%></td>
+		<td><%=client.name%></td>
+		<td>			
+			<%=client.app_id%>-<%=client.app_secret%>
+		</td>
 		<td>
 	        <%= link_to 'Destroy', "/client_apps/#{client.id}", :confirm => 'Are you sure?', :method => :delete %>
 		</td>

@@ -7,7 +7,6 @@ class AuthController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:access_token]
 
   def authorize
-    debugger
     AccessGrant.prune!
     access_grant = current_user.access_grants.create(:client => application)
     redirect_to access_grant.redirect_uri_for(params[:redirect_uri])
@@ -68,6 +67,8 @@ class AuthController < ApplicationController
 
   def application
     @application ||= Client.find_by_app_id(params[:client_id])
+    raise "No appropriate app for app_id=#{params[:client_id]}" if @application.nil?
+    @application
   end
 
 end

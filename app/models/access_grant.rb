@@ -6,7 +6,7 @@ class AccessGrant < ActiveRecord::Base
 
   class << self
     def prune!
-      #意思是不是，访问期三天有效？超过三天后access_token过期，此方法什么时候被调用的？auth_controller
+      #三天有效？
       delete_all(["created_at < ?", 3.days.ago])
     end
   
@@ -21,11 +21,7 @@ class AccessGrant < ActiveRecord::Base
   end
 
   def redirect_uri_for(redirect_uri)
-    if redirect_uri =~ /\?/
-      redirect_uri + "&code=#{code}&response_type=code"
-    else
-      redirect_uri + "?code=#{code}&response_type=code"
-    end
+    redirect_uri+(redirect_uri =~ /\?/ ? "&" :"?")+"code=#{code}&response_type=code"
   end
 
   # Note: This is currently hard coded to 2 days, but it could be configurable 

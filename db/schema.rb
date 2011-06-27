@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110626104734) do
+ActiveRecord::Schema.define(:version => 20110627043733) do
 
   create_table "access_grants", :force => true do |t|
     t.string   "code"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(:version => 20110626104734) do
     t.string   "note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status",     :limit => 50, :default => "new"
+    t.integer  "urgency",                  :default => 0
   end
 
   create_table "users", :force => true do |t|

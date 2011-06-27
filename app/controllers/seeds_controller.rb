@@ -2,7 +2,7 @@ class SeedsController < ApplicationController
   # GET /seeds
   # GET /seeds.xml
   def index
-    @seeds = Seed.all.paginate :page=>params[:page], :order=>"happen_at desc"
+    @seeds = Seed.paginate :all, :page=>params[:page], :order=>"urgency desc, happen_at desc"
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,7 +41,9 @@ class SeedsController < ApplicationController
   # POST /seeds.xml
   def create
     @seed = Seed.new(params[:seed])
-
+    
+    #validition check
+    
     respond_to do |format|
       if @seed.save
         format.html { redirect_to(seeds_path, :notice => 'Seed was successfully created.') }
@@ -77,6 +79,24 @@ class SeedsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(seeds_url) }
+      format.xml  { head :ok }
+    end
+  end
+  
+  def up
+    @seed = Seed.find(params[:id])
+    @seed.update_attribute(:urgency, @seed.urgency.to_i+1)
+    respond_to do |format|
+      format.html { redirect_to(seeds_url, :notice=>"step up 1") }
+      format.xml  { head :ok }
+    end
+  end
+  
+  def down
+    @seed = Seed.find(params[:id])
+    @seed.update_attribute(:urgency, @seed.urgency.to_i-1)
+    respond_to do |format|
+      format.html { redirect_to(seeds_url, :notice=>"step down 1") }
       format.xml  { head :ok }
     end
   end

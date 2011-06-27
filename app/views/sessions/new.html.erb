@@ -1,6 +1,6 @@
 <h2>Sign in</h2>
-<% if local_test? %>
-  <%resource.email='cao7113@hotmail.com'; resource.password='cao123';%>
+<% if local_run? %>
+  <%resource.email='cao7113@tsina.com'; resource.password='cao123';%>
 <% end %>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <p><%= f.email_field :email, :placeholder=>"Your email or username" %></p>

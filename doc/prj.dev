@@ -13,12 +13,17 @@ users表中的authentication_token--access_grants表的access_token
 
 client--客户应用的注册信息
 
-
 ==omniauth的一些改进
 在生成的user_info hash中加入email的key，使用的具体认证策略（如tqq）可以用initializer覆盖
 
 auth--处理sso的server端的服务请求
 authentications--处理omniauth模型中第三方应用中的请求
 
+#改进access_grant模型
+现在采取的是两天过期，然后请求时检查/清除过期数据的方法，更合理的方法应该是：
+过期时间是按照用户/客户应用级别可配置的
+过期数据可以重复利用更新，并记录跟踪各个应用用户登录情况分布
+
+#==深入调查多应用结合模型
 
 

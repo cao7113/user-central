@@ -4,13 +4,17 @@
 <table>
 <% @seeds.each do |seed| %>
   <tr>    
-    <td ><%= seed.body %></td>  
+    <td >[<span style="color:<%=seed.status_color%>;"><%= seed.status %></span>]<%= seed.body %></td>  
   </tr>
   <tr>
-  	<td><%= seed.happen_at.to_s(:db) if seed.happen_at %><%= seed.tag %> <%= seed.note %>
-	    <%= link_to 'Show', seed %>
-	    <%= link_to 'Edit', edit_seed_path(seed) %>
-	    <%= link_to 'Destroy', seed, :confirm => 'Are you sure?', :method => :delete %>
+  	<td>
+  		<%= seed.happen_at_disp %>
+		<span style="color:blue;"><b><%= seed.tag %></b></span> 
+		<%= seed.note %>
+	    <%= link_to 'Up', seed_up_path(seed.id) %> | 
+		<%= link_to 'Down', seed_down_path(seed.id) %> | 
+	    <%= link_to 'Edit', edit_seed_path(seed) %> | 
+	    <%= link_to 'Destroy', seed, :confirm => "Are you sure to delete(#{seed.body})?", :method => :delete %>
 	</td>
   </tr>
 <% end %>

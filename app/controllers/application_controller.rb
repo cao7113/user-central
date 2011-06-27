@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  helper_method :dev?, :local_test?, :auth_from
+  helper_method :dev?, :local_run?, :auth_from
   
   def dev?
     Rails.env.development?
   end
   
-  def local_test?
+  def local_run?
     request.local?
   end
   
