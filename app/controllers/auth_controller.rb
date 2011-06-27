@@ -39,18 +39,19 @@ class AuthController < ApplicationController
       :provider => 'uc',
       :uid => current_user.id.to_s,
       :user_info => {
-         :name => current_user.email, # change if required
+         :name => current_user.username,
+         :email=> current_user.email
       },
       :extra => {
         :admin => current_user.admin?,
-        :first_name => current_user.first_name,
-        :last_name => current_user.last_name
+        :home_url=>current_user.home_url
       }
     }
 
     render :json => hash.to_json
   end
 
+  #TODO 什么个意思啊？？？
   # Incase, we need to check timeout of the session from a different application!
   # This will be called ONLY if the user is authenticated and token is valid
   # Extend the UserManager session 
