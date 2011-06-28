@@ -1,7 +1,0 @@
-<%= form_tag seeds_path do |f| %>  
-  <div class="field">
-  	<%= text_field_tag 'seed[tag]', nil, :placeholder=>"tags...", :size=>"8" %>
-    <%= text_field_tag 'seed[body]', nil, :placeholder=>"body content...", :size=>60 %>    
-    <%= submit_tag "Seed"%>
-  </div>
-<% end %>

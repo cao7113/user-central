@@ -1,8 +1,4 @@
 OauthProviderDemo::Application.routes.draw do
-  resources :seeds
-  #FIXME  有没有将下面的写法集成到上面的方法？
-  get "seeds/:id/up", :to=>"seeds#up", :as=>:seed_up
-  get "seeds/:id/down", :to=>"seeds#down", :as=>:seed_down
 
   get "client_apps/index"
   get "client_apps", :to=>"client_apps#index"
