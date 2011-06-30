@@ -3,6 +3,9 @@
 =end
 
 class ClientAppsController < ApplicationController
+  
+  before_filter :authenticate_user!
+  
   def index
     @clients=Client.paginate :all, :page=>params[:page], :order=>"updated_at desc"
   end

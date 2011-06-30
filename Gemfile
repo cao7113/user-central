@@ -14,3 +14,9 @@ gem 'ruby-debug'
 
 #for back-end admin TODO change to gem format
 #gem 'rails_admin', :git=>'git://github.com/sferik/rails_admin.git'
+gem 'rails_admin', '0.0.1.cao'
+
+#fix rake conflicts
+#gem 'rake', '0.9.2'
+
+
