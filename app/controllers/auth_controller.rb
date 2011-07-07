@@ -4,6 +4,8 @@
 
 class AuthController < ApplicationController
   before_filter :authenticate_user!, :except => [:access_token]
+  
+  #在哪儿定义的？ Module ActionController::RequestForgeryProtection
   skip_before_filter :verify_authenticity_token, :only => [:access_token]
 
   def authorize

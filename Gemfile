@@ -16,7 +16,5 @@ gem 'ruby-debug'
 #gem 'rails_admin', :git=>'git://github.com/sferik/rails_admin.git'
 gem 'rails_admin', '0.0.1.cao'
 
-#fix rake conflicts
-#gem 'rake', '0.9.2'
-
-
+##!!!Notice: change inner omniauth provider to other oauth2 provider
+gem 'devise_oauth2_providable'
