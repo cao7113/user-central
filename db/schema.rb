@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110630024235) do
+ActiveRecord::Schema.define(:version => 20110705083224) do
 
   create_table "access_grants", :force => true do |t|
     t.string   "code"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(:version => 20110630024235) do
     t.datetime "updated_at"
   end
 
+  create_table "bookmarks", :force => true do |t|
+    t.string   "title"
+    t.string   "note"
+    t.integer  "resource_id"
+    t.integer  "access_times"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "clients", :force => true do |t|
     t.string   "name",        :limit => 50,  :null => false
     t.string   "app_id",      :limit => 50,  :null => false
@@ -44,21 +54,46 @@ ActiveRecord::Schema.define(:version => 20110630024235) do
   add_index "clients", ["app_id"], :name => "index_clients_on_app_id", :unique => true
   add_index "clients", ["name"], :name => "index_clients_on_name", :unique => true
 
-  create_table "rails_admin_histories", :force => true do |t|
-    t.string   "message"
-    t.string   "username"
-    t.integer  "item"
-    t.string   "table"
-    t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 8
+  create_table "comments", :force => true do |t|
+    t.string   "title",            :limit => 50, :default => ""
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.string   "summary"
+    t.text     "content"
+    t.string   "status"
+    t.datetime "began_at"
+    t.integer  "charger_id"
+    t.text     "trace"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resources", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "status"
+    t.boolean  "public"
+    t.integer  "access_times"
+    t.string   "admin_note"
+    t.integer  "committer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "note"
+  end
 
   create_table "seeds", :force => true do |t|
-    t.string   "tag"
     t.string   "body"
     t.datetime "happen_at"
     t.string   "note"
@@ -66,6 +101,39 @@ ActiveRecord::Schema.define(:version => 20110630024235) do
     t.datetime "updated_at"
     t.string   "status",     :limit => 50, :default => "new"
     t.integer  "urgency",                  :default => 0
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context"
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "tiny_prints", :force => true do |t|
+    t.string   "image_file_name"
+    t.string   "image_file_size"
+    t.string   "image_content_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tiny_videos", :force => true do |t|
+    t.string   "original_file_name"
+    t.string   "original_file_size"
+    t.string   "original_content_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

@@ -13,8 +13,10 @@ gem 'will_paginate', '3.0.pre2'
 gem 'ruby-debug'
 
 #for back-end admin TODO change to gem format
-#gem 'rails_admin', :git=>'git://github.com/sferik/rails_admin.git'
-gem 'rails_admin', '0.0.1.cao'
+##gem 'rails_admin', :git=>'git://github.com/sferik/rails_admin.git'
+#在线下载安装的gem 0.0.1版本有问题，后本地编译包安装的
+#gem 'rails_admin', '0.0.1.cao' 
+#2011.7.8 移到其它的专有应用中
 
 ##!!!Notice: change inner omniauth provider to other oauth2 provider
-gem 'devise_oauth2_providable'
+#gem 'devise_oauth2_providable'
