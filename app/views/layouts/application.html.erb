@@ -46,8 +46,8 @@
        <%=link_to "http://weibo.com/cao7113/", :target=>"_blank" do %> 
            Follow <img src="http://tp4.sinaimg.cn/1809866795/50/5599211708/1" width="20" height="15"/>
        <%end%> |
-       <%=link_to DEPLOYMENT[:demo_online][:name], DEPLOYMENT[:demo_online][:url] %> @ 
-       <%=link_to DEPLOYMENT[:demo_online][:provider][:name], DEPLOYMENT[:demo_online][:provider][:url] %>
+       <%=link_to DEPLOYMENT[:demo_online][:name], DEPLOYMENT[:demo_online][:url], :target=>"_blank" %> @ 
+       <%= link_to image_tag("heroku.png", :alt=>DEPLOYMENT[:demo_online][:provider][:name], :width=>35, :height=>15), DEPLOYMENT[:demo_online][:provider][:url], :title=>DEPLOYMENT[:demo_online][:provider][:name] %>
 </div>
 </body>
 </html>
