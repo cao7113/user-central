@@ -1,3 +1,4 @@
-<h2>Home page</h2>
 <p>Welcome <%=current_user.username%> at <%=Time.now.to_s(:db)%></p>
-<p>Look my url at <%=link_to current_user.home_url, current_user.home_url, :target=>"_blank" %></p>
+<h2><%=PROVERB%></h2>
+
+<p>Look me at <%=link_to current_user.home_url, current_user.home_url, :target=>"_blank" %></p>
