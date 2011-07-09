@@ -1,4 +1,4 @@
 <p>Welcome <%=current_user.username%> at <%=Time.now.to_s(:db)%></p>
 <h2><%=PROVERB%></h2>
 
-<p>Look me at <%=link_to current_user.home_url, current_user.home_url, :target=>"_blank" %></p>
+<p>Look me at <%=current_user.home_url? ? (link_to current_user.home_url, current_user.home_url, :target=>"_blank") : "！Bad, I have no home url now!" %></p>
