@@ -35,13 +35,19 @@
 
 <hr/>
 <div id="links">
-	Ref: <%=link_to "http://weibo.com/cao7113/", :target=>"_blank" do %> 
-           Follow <img src="http://tp4.sinaimg.cn/1809866795/50/5599211708/1" width="20" height="15"/>
-       <%end%> |		
+	Ref: 		
        <%=link_to "Source", "https://github.com/cao7113/user-central", :target=>"_blank" %> |
        <%=link_to "SsoProvider", "https://github.com/joshsoftware/sso-devise-omniauth-provider", :target=>"_blank" %> |	
 		   <%=link_to "Omniauth", "https://github.com/intridea/omniauth", :target=>"_blank" %> |
 	     <%=link_to "Devise", "https://github.com/plataformatec/devise", :target=>"_blank" %> |		          
 </div>	
+<div id="site_info" style="align:center;">
+	Powered by 
+       <%=link_to "http://weibo.com/cao7113/", :target=>"_blank" do %> 
+           Follow <img src="http://tp4.sinaimg.cn/1809866795/50/5599211708/1" width="20" height="15"/>
+       <%end%> |
+       <%=link_to DEPLOYMENT[:demo_online][:name], DEPLOYMENT[:demo_online][:url] %> @ 
+       <%=link_to DEPLOYMENT[:demo_online][:provider][:name], DEPLOYMENT[:demo_online][:provider][:url] %>
+</div>
 </body>
 </html>
