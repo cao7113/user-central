@@ -2,3 +2,7 @@
 <h2><%=PROVERB%></h2>
 
 <p>Look me at <%=current_user.home_url? ? (link_to current_user.home_url, current_user.home_url, :target=>"_blank") : "！Bad, I have no home url now!" %></p>
+
+<p>
+  Some test info: Rails.env=<%=Rails.env%>
+</p>
