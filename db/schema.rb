@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110705083224) do
+ActiveRecord::Schema.define(:version => 20110710183223) do
 
   create_table "access_grants", :force => true do |t|
     t.string   "code"
@@ -19,6 +19,18 @@ ActiveRecord::Schema.define(:version => 20110705083224) do
     t.datetime "access_token_expires_at"
     t.integer  "user_id"
     t.integer  "client_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "accounts", :force => true do |t|
+    t.string   "name",                          :null => false
+    t.integer  "resource_id"
+    t.string   "token"
+    t.string   "secret"
+    t.text     "description"
+    t.string   "status",      :default => "ok"
+    t.string   "note"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20110705083224) do
     t.string   "description", :limit => 500
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "logout_url",  :limit => 500
   end
 
   add_index "clients", ["app_id"], :name => "index_clients_on_app_id", :unique => true
