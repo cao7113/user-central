@@ -6,3 +6,4 @@ config/database.yml
 #一些临时文件
 *~
 *.tmp
+.project
