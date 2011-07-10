@@ -9,6 +9,14 @@ class AuthController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:access_token]
 
   def authorize
+    #写入退出回调，同时记下该用户登录的应用
+    if application 
+      #TODO 提供其它维护方式，不用每次在这里动态检查
+      if application.logout_url.to_s.blank?
+        application.update_attribute(:logout_url, params['logout_url'])     
+      end      
+      (session[:login_clients]||=[])<<application.id
+    end
     AccessGrant.prune!
     access_grant = current_user.access_grants.create(:client => application)
     redirect_to access_grant.redirect_uri_for(params[:redirect_uri])
