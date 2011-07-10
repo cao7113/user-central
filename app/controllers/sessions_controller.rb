@@ -23,12 +23,12 @@ class SessionsController < Devise::SessionsController
     return false if session[:login_clients].blank?
     session[:login_clients]||=[]
     if params['client_id']
-      client=Client.find_by_app_id(params['client_id'])
+      client=ClientApp.find_by_app_id(params['client_id'])
       session[:login_clients].delete(client.id) if client
     end
     next_client_id=session[:login_clients].first
     if next_client_id
-      next_client=Client.find(next_client_id)
+      next_client=ClientApp.find(next_client_id)
       logger.debug "====redirect to #{next_client.name} #{next_client.logout_url} for logout..."
       redirect_to next_client.logout_url  
       return true         

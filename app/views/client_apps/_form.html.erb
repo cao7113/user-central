@@ -1,0 +1,25 @@
+<%= form_for(@client_app) do |f| %>
+  <% if @client_app.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@client_app.errors.count, "error") %> prohibited this seed from being saved:</h2>
+      <ul>
+      <% @client_app.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.text_field :name, :placeholder=>"Name" %>
+    <%= f.text_field :url, :placeholder=>"Url..."  %>
+  </div>
+  <div class="field">
+    <%= f.text_area :description, :placeholder=>"Description content", :rows=>4, :cols=>60 %>
+  </div>
+  <div class="field">
+    <%= f.text_field :logout_url, :placeholder=>"Logout url" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -9,21 +9,17 @@ class AuthController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:access_token]
 
   def authorize
-    #写入退出回调，同时记下该用户登录的应用
+    #记下该用户登录的应用
     if application 
-      #TODO 提供其它维护方式，不用每次在这里动态检查
-      if application.logout_url.to_s.blank?
-        application.update_attribute(:logout_url, params['logout_url'])     
-      end      
       (session[:login_clients]||=[])<<application.id
     end
     AccessGrant.prune!
-    access_grant = current_user.access_grants.create(:client => application)
+    access_grant = current_user.access_grants.create(:client_app => application)
     redirect_to access_grant.redirect_uri_for(params[:redirect_uri])
   end
 
   def access_token
-    application = Client.authenticate(params[:client_id], params[:client_secret])
+    application = ClientApp.authenticate(params[:client_id], params[:client_secret])
     
     if application.nil?
       render :json => {:error => "Could not find application"}
@@ -77,7 +73,7 @@ class AuthController < ApplicationController
   protected
 
   def application
-    @application ||= Client.find_by_app_id(params[:client_id])
+    @application ||= ClientApp.find_by_app_id(params[:client_id])
     raise "No appropriate app for app_id=#{params[:client_id]}" if @application.nil?
     @application
   end

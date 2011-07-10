@@ -1,9 +1,10 @@
 OauthProviderDemo::Application.routes.draw do
 
-  get "client_apps/index"
-  get "client_apps", :to=>"client_apps#index"
-  post "client_apps", :to=>"client_apps#create"
-  delete "client_apps/:id", :to=>"client_apps#destroy"
+#  get "client_apps/index"
+#  get "client_apps", :to=>"client_apps#index"
+#  post "client_apps", :to=>"client_apps#create"
+#  delete "client_apps/:id", :to=>"client_apps#destroy"
+  resources :client_apps
 
   get "home/index"
 

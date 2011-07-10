@@ -4,8 +4,8 @@ class CreateClient < ActiveRecord::Migration
       t.string :name, :null=>false, :limit=>50      
       t.string :app_id, :null=>false, :limit=>50
       t.string :app_secret, :null=>false, :limit=>50
-      t.string :url, :limit=>200
-      t.string :description, :limit=>500
+      t.string :url, :limit=>200                      #主页url
+      t.string :description, :limit=>500              #应用的描述
       
       t.timestamps
     end

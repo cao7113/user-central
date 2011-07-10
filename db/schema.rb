@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110710183223) do
+ActiveRecord::Schema.define(:version => 20110710183225) do
 
   create_table "access_grants", :force => true do |t|
     t.string   "code"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20110710183223) do
     t.datetime "updated_at"
   end
 
-  create_table "clients", :force => true do |t|
+  create_table "client_apps", :force => true do |t|
     t.string   "name",        :limit => 50,  :null => false
     t.string   "app_id",      :limit => 50,  :null => false
     t.string   "app_secret",  :limit => 50,  :null => false
@@ -62,10 +62,11 @@ ActiveRecord::Schema.define(:version => 20110710183223) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "logout_url",  :limit => 500
+    t.integer  "user_id",                    :null => false
   end
 
-  add_index "clients", ["app_id"], :name => "index_clients_on_app_id", :unique => true
-  add_index "clients", ["name"], :name => "index_clients_on_name", :unique => true
+  add_index "client_apps", ["app_id"], :name => "index_clients_on_app_id", :unique => true
+  add_index "client_apps", ["name"], :name => "index_clients_on_name", :unique => true
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""

@@ -1,8 +1,8 @@
 =begin
-  客户应用
+  客户端应用
 =end
 
-class Client < ActiveRecord::Base
+class ClientApp < ActiveRecord::Base
   
   before_create :generate_tokens
   
@@ -19,6 +19,6 @@ class Client < ActiveRecord::Base
   end
   
   def to_s
-    "Client #{name}: #{app_id}-#{app_secret}"
+    "Client App #{name}: #{app_id}-#{app_secret}"
   end
 end
