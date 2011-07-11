@@ -1,6 +1,6 @@
 class AccessGrant < ActiveRecord::Base
   belongs_to :user
-  belongs_to :client_app, :class_name=>"ClientApp"
+  belongs_to :client_app, :foreign_key => "client_id"
   before_create :generate_tokens
 
 

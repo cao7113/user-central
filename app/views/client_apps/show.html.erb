@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @client_app.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @client_app.name %>
+</p>
+<p>
+  <b>Url:</b>
+  <%= @client_app.url %>
+</p>
+<p>
+  <b>Logout url:</b>
+  <%= @client_app.logout_url %>
+</p>
+<p>
+  <b>Description:</b>
+  <%= @client_app.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_client_app_path(@seed) %> |
+<%= link_to 'Back', client_apps_path %>

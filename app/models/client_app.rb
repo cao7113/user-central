@@ -4,6 +4,7 @@
 
 class ClientApp < ActiveRecord::Base
   
+  belongs_to :user
   before_create :generate_tokens
   
   class << self    

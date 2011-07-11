@@ -48,6 +48,17 @@ class ClientAppsController < ApplicationController
       end
     end
   end
+
+  # GET /client_apps/1
+  # GET /client_apps/1.xml
+  def show
+    @client_app = ClientApp.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @seed }
+    end
+  end
   
   def destroy
     ClientApp.destroy(params[:id])
